@@ -10,12 +10,31 @@ const mensagem = document.getElementById('mensagem');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const codigo = document.getElementById('codigo').value;
-  const medidas = document.getElementById('medidas').value;
-  const tipo_encaixe = document.getElementById('tipo_encaixe').value;
+  const codigo = document.getElementById('codigo').value.trim();
+  const medidas = document.getElementById('medidas').value.trim();
+  const tipo_encaixe = document.getElementById('tipo_encaixe').value.trim();
 
-  console.log('Dados a serem cadastrados:', { codigo, medidas, tipo_encaixe });
+  // Verifica se o código já está cadastrado
+  const { data: codigoExistente, error: erroVerificacao } = await supabase
+    .from('codigos')
+    .select('id')
+    .eq('codigo', codigo)
+    .maybeSingle();
 
+  if (erroVerificacao) {
+    console.error('Erro ao verificar duplicidade:', erroVerificacao);
+    mensagem.textContent = 'Erro ao verificar duplicidade.';
+    mensagem.style.color = 'red';
+    return;
+  }
+
+  if (codigoExistente) {
+    mensagem.textContent = 'Este código já está cadastrado!';
+    mensagem.style.color = 'orange';
+    return;
+  }
+
+  // Insere se não for duplicado
   const { data, error } = await supabase
     .from('codigos')
     .insert([{ codigo, medidas, tipo_encaixe }]);
