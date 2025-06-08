@@ -137,3 +137,11 @@ button:hover {
   background-color: #005fa3;
 }
 
+#resultadocliente {
+  margin-top: 25px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+  min-height: 30px;
+}

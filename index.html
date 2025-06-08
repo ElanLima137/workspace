@@ -17,14 +17,13 @@
   </div>
 
   <div class="content">
+
     <!-- Página HOME / Consulta -->
     <div id="home" class="page active">
-  <h1>Consultar Produto por Código</h1>
-
-  <input type="text" id="codigoConsulta" placeholder="Digite o código do produto" />
-  <button onclick="consultarProduto()">Consultar</button>
-
-  <div id="resultado" class="resultado"></div>
+      <h1>Consultar Produto por Código</h1>
+      <input type="text" id="codigoConsulta" placeholder="Digite o código do produto" />
+      <button onclick="consultarProduto()">Consultar</button>
+      <div id="resultado" class="resultado"></div>
     </div>
 
     <!-- Página SEDEX -->
@@ -36,19 +35,19 @@
     <!-- Página CALCULADORA -->
     <div id="calculadora" class="page">
       <h1>Calculadora</h1>
-      
+
       <label>
         Campo 1:
         <input type="number" id="campo1" />
       </label>
       <br/>
-      
+
       <label>
         Campo 2:
         <input type="number" id="campo2" />
       </label>
       <br/>
-      
+
       <label>
         Modo:
         <select id="modo">
@@ -65,22 +64,37 @@
 
     <!-- Página LISTA DE CLIENTE -->
     <div id="listaCliente" class="page">
-      <h1>Lista de Clientes</h1>
-      <p>Insira aqui</p>
+      <h1>Consultar Cliente por Número</h1>
+      <input type="text" id="clienteConsulta" placeholder="Digite o número de telefone do cliente" />
+      <button onclick="consultarClienteCadastrado()">Consultar</button>
+      <div id="resultadocliente" class="resultadocliente"></div>
     </div>
 
     <!-- Página CADASTRO DE CLIENTE -->
     <div id="cadastroCliente" class="page">
       <h1>Cadastro de Cliente</h1>
-      <p>Em construção...</p>
+      <form id="form-cadastroC">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required />
+
+        <label for="cliente">Nome do cliente:</label>
+        <input type="text" id="cliente" name="cliente" placeholder="Orion" required />
+
+        <label for="endereco">Endereço com CEP:</label>
+        <input type="text" id="endereco" name="endereco" required />
+
+        <label for="entrega">Tipo de entrega:</label>
+        <input type="text" id="entrega" name="entrega" required />        
+
+        <button type="submit">Cadastrar</button>
+        <p class="message" id="mensagem"></p>
+      </form>
     </div>
 
     <!-- Página CADASTRO DE PRODUTO -->
     <div id="cadastroProduto" class="page">
       <h1>Cadastro de Produto</h1>
       <form id="form-cadastro">
-        <h2>Cadastro de Item</h2>
-
         <label for="codigo">Código:</label>
         <input type="text" id="codigo" name="codigo" required />
 
@@ -98,12 +112,15 @@
         <p class="message" id="mensagem"></p>
       </form>
     </div>
+
   </div>
 
   <!-- Scripts -->
   <script src="script.js"></script>
   <script type="module" src="cadastro.js"></script>
   <script type="module" src="consulta.js"></script>
+  <script type="module" src="consultaCliente.js"></script>
+  <script type="module" src="cadastroCliente.js"></script>
   <script src="calculadora.js"></script>
 </body>
 </html>
