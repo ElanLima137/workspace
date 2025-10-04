@@ -1,4 +1,4 @@
-
+//show
 function showPage(pageId){
 
     const pages = document.querySelectorAll('.page');
